@@ -6,36 +6,36 @@ import javax.persistence.*;
 @Table(name = "prescriptions")
 public class Prescription {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "prescription")
-    private String prescription;
+    @Column(name = "id_Patient")
+    private Integer idPatient;
+
+    @Column(name = "id_treatment")
+    private Integer idTreatment;
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getIdPatient() {
-        return idPatient;
+    public Integer getIdPatient() {
+        return this.idPatient;
     }
 
-    public void setIdPatient(int idPatient) {
+    public void setIdPatient(Integer idPatient) {
         this.idPatient = idPatient;
     }
 
-    @Column(name = "id_Patient")
-    private int idPatient;
-
-    public String getPrescription() {
-        return prescription;
+    public Integer getIdTreatment() {
+        return this.idTreatment;
     }
 
-    public void setPrescription(String prescription) {
-        this.prescription = prescription;
+    public void setIdTreatment(Integer idTreatment) {
+        this.idTreatment = idTreatment;
     }
 }

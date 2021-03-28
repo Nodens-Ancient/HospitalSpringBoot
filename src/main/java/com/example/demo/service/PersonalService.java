@@ -2,9 +2,13 @@ package com.example.demo.service;
 
 import com.example.demo.models.Personal;
 import com.example.demo.repos.PersonalRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class PersonalService{
     private final PersonalRepository personalRepository;
 

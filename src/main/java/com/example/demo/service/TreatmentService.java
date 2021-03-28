@@ -3,10 +3,12 @@ package com.example.demo.service;
 import com.example.demo.models.Treatment;
 import com.example.demo.repos.TreatmentRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class TreatmentService {
     private final TreatmentRepository treatmentRepository;
 

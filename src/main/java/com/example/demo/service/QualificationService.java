@@ -2,9 +2,13 @@ package com.example.demo.service;
 
 import com.example.demo.models.Qualification;
 import com.example.demo.repos.QualificationRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class QualificationService {
     private final QualificationRepository qualificationRepository;
 

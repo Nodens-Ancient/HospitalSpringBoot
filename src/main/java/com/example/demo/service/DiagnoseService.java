@@ -12,8 +12,8 @@ import java.util.List;
 public class DiagnoseService {
     private final DiagnoseRepository diagnoseRepository;
 
-    public DiagnoseService(DiagnoseRepository diagRepo) {
-        this.diagnoseRepository = diagRepo;
+    public DiagnoseService(DiagnoseRepository diagnoseRepository) {
+        this.diagnoseRepository = diagnoseRepository;
     }
 
     public List<Diagnose> findAll(){
