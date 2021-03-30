@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet  author="Nodens"  id="changelog-1.0">
+
+        <createTable  tableName="diagnoses">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="id_Patient"  type="int"/>
+            <column  name="symptoms"  type="varchar(50)"/>
+            <column  name="diagnose"  type="varchar(50)"/>
+        </createTable>
+
+        <createTable  tableName="discharge_form">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="id_patient"  type="int"/>
+            <column  name="discharge_date"  type="varchar(50)"/>
+            <column  name="final_diagnose"  type="varchar(50)"/>
+        </createTable>
+
+        <createTable  tableName="patients">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="name"  type="varchar(50)"/>
+            <column  name="phone_Number"  type="varchar(50)"/>
+            <column  name="id_Medical_History"  type="int"/>
+        </createTable>
+
+        <createTable  tableName="personal">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="name"  type="varchar(50)"/>
+            <column  name="phone_Number"  type="varchar(50)"/>
+            <column  name="id_Qualification"  type="int"/>
+        </createTable>
+
+        <createTable  tableName="prescriptions">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="id_Patient"  type="int"/>
+            <column  name="id_treatment"  type="int"/>
+        </createTable>
+
+        <createTable  tableName="treatment">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="treatment"  type="varchar(50)"/>
+            <column  name="qualification_required"  type="int"/>
+        </createTable>
+
+        <createTable  tableName="qualifications">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="work"  type="varchar(50)"/>
+        </createTable>
+
+
+
+    </changeSet>
+</databaseChangeLog>

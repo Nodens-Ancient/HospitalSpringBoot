@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet  author="Nodens"  id="changelog-3.0">
+
+        <insert  catalogName="testtest"
+                 dbms="mysql"
+                 schemaName="public"
+                 tableName="patients">
+            <column  name="name"  value="NameLiquibase"/>
+            <column  name="phone_Number"  value="56414967"/>
+            <column  name="id_Medical_History"  value="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
