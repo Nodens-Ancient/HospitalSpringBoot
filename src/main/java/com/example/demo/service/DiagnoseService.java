@@ -5,6 +5,7 @@ import com.example.demo.repos.DiagnoseRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,6 +30,17 @@ public class DiagnoseService {
         diagnoseRepository.deleteById(id);
         diagnoseRepository.save(diagnose);
         return diagnoseRepository.findAll();
+    }
+
+    public List<Diagnose> getDiagnosesByPatientId(int id_Patient){
+        ArrayList<Diagnose> dList = new ArrayList<>();
+        for (Diagnose d:
+                findAll()) {
+            if (d.getIdPatient() == id_Patient){
+                dList.add(d);
+            }
+        }
+        return dList;
     }
 
     public Diagnose findById(int id){

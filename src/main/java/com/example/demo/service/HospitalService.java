@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import com.example.demo.models.Diagnose;
+import com.example.demo.models.DischargeForm;
 import com.example.demo.models.PatientInfo;
 import com.example.demo.models.Prescription;
 import org.springframework.stereotype.Service;
@@ -35,11 +37,11 @@ public class HospitalService {
         this.patientInfo.setId(patientService.findById(idPatient).getId());
         this.patientInfo.setName(patientService.findById(idPatient).getName());
         this.patientInfo.setPhone_Number(patientService.findById(idPatient).getPhoneNumber());
-        this.patientInfo.setTreatment(getTreatments(idPatient));
+        this.patientInfo.setTreatment(getPatientTreatments(idPatient));
         return this.patientInfo;
     }
 
-    private List<String> getTreatments(int patientId){
+    public List<String> getPatientTreatments(int patientId){
         ArrayList<String> treatmentList = new ArrayList<>();
         for (Prescription p:
                 prescriptionService.findAll()) {
@@ -48,5 +50,17 @@ public class HospitalService {
             }
         }
         return treatmentList;
+    }
+
+    public List<DischargeForm> getPatientDischargeForm(int id_Patients){
+        return dischargeFormService.getDischargeFormsByPatientId(id_Patients);
+    }
+
+    public List<Diagnose> getPatientDiagnoses(int id_Patients){
+        return diagnoseService.getDiagnosesByPatientId(id_Patients);
+    }
+
+    public void dischargePatient(int id_Patient, String discharge_Date, String final_Diagnose){
+        dischargeFormService.save(new DischargeForm(id_Patient, discharge_Date, final_Diagnose));
     }
 }

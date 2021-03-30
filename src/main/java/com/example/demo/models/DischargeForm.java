@@ -18,6 +18,15 @@ public class DischargeForm {
     @Column(name = "final_diagnose")
     private String finalDiagnose;
 
+    public DischargeForm(Integer idPatient, String dischargeDate, String finalDiagnose) {
+        this.idPatient = idPatient;
+        this.dischargeDate = dischargeDate;
+        this.finalDiagnose = finalDiagnose;
+    }
+
+    public DischargeForm() {
+    }
+
     public Integer getId() {
         return this.id;
     }
@@ -49,4 +58,6 @@ public class DischargeForm {
     public void setFinalDiagnose(String finalDiagnose) {
         this.finalDiagnose = finalDiagnose;
     }
+
+
 }
