@@ -34,7 +34,13 @@ public class HospitalService {
     }
 
     public PatientInfo getPatientInfo(int idPatient){
-        this.patientInfo.setId(patientService.findById(idPatient).getId());
+        try{
+            this.patientInfo.setId(patientService.findById(idPatient).getId());
+        }
+        catch (NullPointerException exception){
+            return null;
+        }
+        this.patientInfo.setIdPatient(idPatient);
         this.patientInfo.setName(patientService.findById(idPatient).getName());
         this.patientInfo.setPhone_Number(patientService.findById(idPatient).getPhoneNumber());
         this.patientInfo.setTreatment(getPatientTreatments(idPatient));
@@ -61,6 +67,18 @@ public class HospitalService {
     }
 
     public void dischargePatient(int id_Patient, String discharge_Date, String final_Diagnose){
-        dischargeFormService.save(new DischargeForm(id_Patient, discharge_Date, final_Diagnose));
+        DischargeForm dischargeForm = new DischargeForm();
+        dischargeForm.setIdPatient(id_Patient);
+        dischargeForm.setDischargeDate(discharge_Date);
+        dischargeForm.setFinalDiagnose(final_Diagnose);
+        dischargeFormService.save(dischargeForm);
+    }
+
+    public Diagnose addDiagnose(int id_Patient, String symptoms, String diagnose){
+        return new Diagnose(id_Patient, symptoms, diagnose);
+    }
+
+    public Prescription addPrescription(int id_Patient, int id_Prescription){
+        return new Prescription(id_Patient, id_Prescription);
     }
 }

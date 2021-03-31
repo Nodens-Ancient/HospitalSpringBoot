@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,7 +20,8 @@ public class DischargeForm {
     @Column(name = "final_diagnose")
     private String finalDiagnose;
 
-    public DischargeForm(Integer idPatient, String dischargeDate, String finalDiagnose) {
+    public DischargeForm(Integer id, Integer idPatient, String dischargeDate, String finalDiagnose) {
+        this.id = id;
         this.idPatient = idPatient;
         this.dischargeDate = dischargeDate;
         this.finalDiagnose = finalDiagnose;

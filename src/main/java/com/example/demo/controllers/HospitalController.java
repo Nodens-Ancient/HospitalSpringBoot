@@ -1,9 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.Diagnose;
-import com.example.demo.models.DischargeForm;
-import com.example.demo.models.Patient;
-import com.example.demo.models.PatientInfo;
+import com.example.demo.models.*;
 import com.example.demo.service.HospitalService;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +15,7 @@ public class HospitalController {
     }
 
     @GetMapping("/Hospital/patients/{id}")
-    public PatientInfo getTreatments(@PathVariable("id") int id){
+    public PatientInfo getPatientInfo(@PathVariable("id") int id){
         return hospitalService.getPatientInfo(id);
     }
 
@@ -37,8 +34,20 @@ public class HospitalController {
         return hospitalService.getPatientDiagnoses(id);
     }
 
+
+    @PostMapping("/Hospital/patients/{id}/diagnoses")
+    public Diagnose addDiagnose(@PathVariable("id") Integer id_Patient, @RequestBody String symptoms, @RequestBody String diagnose){ ;
+        return hospitalService.addDiagnose(id_Patient, symptoms, diagnose);
+    }
+
     @GetMapping("/Hospital/patients/{id}/prescriptions")
     public List<String> getPatientPrescriptions(@PathVariable("id") int id){
         return hospitalService.getPatientTreatments(id);
     }
+
+    @PostMapping("/Hospital/patients/{id}/prescriptions")
+    public Prescription addPrescriptions(@PathVariable("id") Integer id_Patient, @RequestBody int id_Prescription){
+        return hospitalService.addPrescription(id_Patient, id_Prescription);
+    }
+
 }

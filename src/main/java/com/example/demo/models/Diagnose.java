@@ -21,6 +21,12 @@ public class Diagnose{
     public Diagnose() {
     }
 
+    public Diagnose(int idPatient, String symptoms, String diagnose) {
+        this.idPatient = idPatient;
+        this.symptoms = symptoms;
+        this.diagnose = diagnose;
+    }
+
     public Integer getId() {
         return id;
     }

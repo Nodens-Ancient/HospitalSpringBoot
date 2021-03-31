@@ -38,4 +38,12 @@ public class Prescription {
     public void setIdTreatment(Integer idTreatment) {
         this.idTreatment = idTreatment;
     }
+
+    public Prescription() {
+    }
+
+    public Prescription(Integer idPatient, Integer idTreatment) {
+        this.idPatient = idPatient;
+        this.idTreatment = idTreatment;
+    }
 }
