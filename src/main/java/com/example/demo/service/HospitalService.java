@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -49,12 +50,10 @@ public class HospitalService {
 
     public List<String> getPatientTreatments(int patientId){
         ArrayList<String> treatmentList = new ArrayList<>();
-        for (Prescription p:
-                prescriptionService.findAll()) {
-            if(p.getIdPatient() == patientId){
-                treatmentList.add(treatmentService.findById(p.getIdTreatment()).getTreatment());
-            }
-        }
+        prescriptionService.findAll().stream()
+                .filter(prescription -> prescription.getIdPatient().equals(patientId))
+                .forEach(prescription -> treatmentList.add(treatmentService.findById(prescription.getIdTreatment())
+                        .getTreatment()));
         return treatmentList;
     }
 
